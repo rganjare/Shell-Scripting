@@ -24,3 +24,8 @@ echo ${c[1]}
 echo ${c[2]}
 echo ${c[3]}
 echo ${c[*]}
+
+## Environment Variable 
+
+echo training = ${TRAINING}
+echo training = $TRAINING
