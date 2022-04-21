@@ -5,5 +5,7 @@ echo ${a}times
 echo $b
 
 
-DATE=(date +%F)
+DATE=$(date +%F)
 echo "Today's" date is $DATE
+
+echo "Today's" date is $(date +%F)
