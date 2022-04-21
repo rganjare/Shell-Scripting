@@ -17,6 +17,8 @@ echo Hello World
 # \e[0m -> this is to disable the color
 
 echo -e "\e[31mText\e[0m in Red Color"
+
+echo -e "\e[33mtestInYellowColor\e[0m"
 echo "One more line"
 
 echo -e "Line1\n\nLine2"
