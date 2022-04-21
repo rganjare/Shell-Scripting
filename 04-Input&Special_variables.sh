@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# User input Variables
 read -p "==> Enter your Name: " NAME
 echo ==> my name is $NAME
 echo "==> my name is $NAME"
