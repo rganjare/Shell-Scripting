@@ -26,10 +26,10 @@ echo ${c[3]}
 echo ${c[*]}
 
 ## Environment Variable 
-TRAINING=Devops -- in SSH
-export TRAINING -- in SSH 
-or 
-export TRAINING=DevOps -- in SSH 
+# TRAINING=Devops -- in SSH
+# export TRAINING -- in SSH 
+# or 
+# export TRAINING=DevOps -- in SSH 
 
 echo training = ${TRAINING}
 echo training = $TRAINING
