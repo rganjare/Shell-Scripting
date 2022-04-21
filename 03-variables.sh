@@ -7,11 +7,11 @@ echo $b
 DATE=$(date +%F)
 echo "Today's" date is $DATE
 
-echo  Time is $(date +%T)
+echo  Time is $(date +%T)  ## Statement
 
 x=10
 y=20
-z=$(($x+$y))
+z=$(($x+$y))  ##expression
 
 echo Addition of $x and $y is $z
 
@@ -26,6 +26,10 @@ echo ${c[3]}
 echo ${c[*]}
 
 ## Environment Variable 
+TRAINING=Devops -- in SSH
+export TRAINING -- in SSH 
+or 
+export TRAINING=DevOps -- in SSH 
 
 echo training = ${TRAINING}
 echo training = $TRAINING
