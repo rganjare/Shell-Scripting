@@ -66,7 +66,7 @@ fi
 
 x=10
 
-if [ "$x" -eq "5"]; then
+if [ "$x" -eq "10"]; then
     echo both are equal
 elif [ "$x" -ne "5" ]; then
     echo both are not equal
