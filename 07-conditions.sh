@@ -67,7 +67,7 @@ fi
 x=10
 y=20
 
-if [$x -eq $y]; then
+if ["$x" -eq "$y"]; then
     echo both are equal
 elif ["$x" -ne "$y"]; then
     echo both are not equal
