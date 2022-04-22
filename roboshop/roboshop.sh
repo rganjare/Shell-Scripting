@@ -1,9 +1,7 @@
 #!/bin/bash
 
-if [-e components/$1.sh ]; then
+if [ true ]; then
     bash components/$1.sh 
-else [
-    echo components/$1.sh does not exist 
-    exit
-    ]
+else [ echo components/$1.sh does not exist 
+        exit ]
 fi
