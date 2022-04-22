@@ -14,6 +14,7 @@ if [ $? -eq 0 ]; then
     echo -e "\e[32m==>SUCCESS\e[0m"
 else
    echo -e "\e[31m==>Failuer\e[0m" 
+   exit 2
 fi
 
 echo -e "\e[33m download the HTDOCS content and deploy under the Nginx path \e[0m"
@@ -22,6 +23,7 @@ if [ $? -eq 0 ]; then
     echo -e "\e[32m==>SUCCESS\e[0m"
 else
    echo -e "\e[31m==>Failuer\e[0m" 
+   exit 2
 fi
 
 echo -e "\e[33m Deploy in Nginx Default Location \e[0m"
@@ -36,6 +38,7 @@ if [ $? -eq 0 ]; then
     echo -e "\e[32m==>SUCCESS\e[0m"
 else
    echo -e "\e[31m==>Failuer\e[0m" 
+   exit 2
 fi
 
 echo -e "\e[33m Finally restart the service once to effect the changes \e[0m"
@@ -44,5 +47,7 @@ if [ $? -eq 0 ]; then
     echo -e "\e[32m==>SUCCESS\e[0m"
 else
    echo -e "\e[31m==>Failuer\e[0m" 
+   exit 2
 fi
+
 systemctl enable nginx
