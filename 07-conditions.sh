@@ -68,7 +68,7 @@ test=10
 
 echo print variable value "$test"
 
-if [ $test -eq 10 ]; then
+if [$test -eq 10]; then
     echo both are equalllllll $test
 elif [ $test -ne 5 ]; then
     echo both are not equalllllll
