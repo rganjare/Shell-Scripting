@@ -1,2 +1,2 @@
 
-echo Welcome to FrontEnd Component !!!
+echo ==> Welcome to FrontEnd Component !!!
