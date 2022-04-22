@@ -55,6 +55,6 @@ if [ $? -eq 0 ]; then
     echo -e "\e[32m==>SUCCESS\e[0m"
 else
    echo -e "\e[31m==>Failuer !!!\e[0m" 
-   exit 2
+   exit 2   
 fi
-systemctl status nginx -L
+systemctl status nginx -l
