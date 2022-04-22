@@ -66,19 +66,19 @@ fi
 
 test=10
 
-echo $test
+echo print variable value $test
 
-if [ "$test" -eq 10 ]; then
+if [ $test -eq 10 ]; then
     echo both are equal
-elif [ "$test" -ne 5 ]; then
+elif [ $test -ne 5 ]; then
     echo both are not equalllllll
-elif [ "$test" -le 5 ]; then
+elif [ $test -le 5 ]; then
     echo X is less than or Equal to Y
-elif [ "$test" -lt 7 ]; then
+elif [ $test -lt 7 ]; then
     echo X is less than Y
-elif [ "$test" -gt 5 ]; then
+elif [ $test -gt 5 ]; then
     echo X is greater than Y
-elif [ "$test" -ge 6 ]; then
+elif [ $test -ge 6 ]; then
     echo $test is greater than or equals to Y
 else 
     echo conditional operator check     
