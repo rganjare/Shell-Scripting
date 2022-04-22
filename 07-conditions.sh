@@ -66,17 +66,17 @@ fi
 
 x=10
 
-if ["$x" -eq 5]; then
+if [ "$x" -eq "5"]; then
     echo both are equal
-elif ["$x" -ne 5]; then
+elif [ "$x" -ne "5" ]; then
     echo both are not equal
-elif ["$x" -le 5]; then
+elif [ "$x" -le 5 ]; then
     echo X is less than or Equal to Y
-elif ["$x" -lt 7]; then
+elif [ "$x" -lt 7 ]; then
     echo X is less than Y
-elif ["$x" -gt 5]; then
+elif [ "$x" -gt 5 ]; then
     echo X is greater than Y
-elif ["$x" -ge 6]; then
+elif [ "$x" -ge 6 ]; then
     echo X is greater than or equals to Y
 else 
     echo conditional operator check     
