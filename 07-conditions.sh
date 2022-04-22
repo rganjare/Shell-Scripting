@@ -66,10 +66,12 @@ fi
 
 x=10
 
-if [ "$x" -eq "10"]; then
+echo $X
+
+if [ "$x" -eq 10 ]; then
     echo both are equal
-elif [ "$x" -ne "5" ]; then
-    echo both are not equal
+elif [ "$x" -ne 5 ]; then
+    echo both are not equalllllll
 elif [ "$x" -le 5 ]; then
     echo X is less than or Equal to Y
 elif [ "$x" -lt 7 ]; then
