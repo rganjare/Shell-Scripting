@@ -1,2 +1,2 @@
 
-echo ==> Welcome to cart Component !!!
+echo "==> Welcome to cart Component !!!"
