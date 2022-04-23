@@ -2,9 +2,9 @@
 
 PrintMessage(){
 echo My name is Rahul.
-echo I am learning DevOps.
+echo I am learning $1.
 echo I am very keen about it.
 }
 
 
-PrintMessage
+PrintMessage Selenium
