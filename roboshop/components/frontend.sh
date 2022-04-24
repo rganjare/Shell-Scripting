@@ -49,4 +49,4 @@ systemctl enable nginx
 StatusCheck $? "Enable Nginx service status" 
 
 systemctl status nginx -l
-Print "Cool!!! Frontend is up and Running !!!"
+echo -e "\e[31m Cool!!! Frontend is up and Running !!! \e[0m"
