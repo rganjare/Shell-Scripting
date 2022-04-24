@@ -39,7 +39,7 @@ STAT(){
 }
 
 STAT
-echo -e "\e[32m ===> Exit status of function STAT is \e[0m" $?
+echo -e "\e[33m ===> Exit status of function STAT is \e[0m" $?
 
 ## Note, Function needs to declared first and then you call the function later in the code
 ## Function will have it's own set of special variables
