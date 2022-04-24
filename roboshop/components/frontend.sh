@@ -1,5 +1,5 @@
 
-echo "==> Welcome to FrontEnd Component !!!"
+echo -e "\e[34m ***** Welcome to FrontEnd Component installation ****\e[0m"
 
 USER_ID=$(sudo id -u)
 
@@ -18,7 +18,7 @@ fi
 }
 
 Print(){
-    echo -e "\e[33m************************* $1 *********************************\e[0m" >> $LOG_FILE
+    echo -e "\e[33m*********************** $1 ***********************\e[0m" >> $LOG_FILE
     echo -e "\e[33m ==> $1 \e[0m"
 }
 
