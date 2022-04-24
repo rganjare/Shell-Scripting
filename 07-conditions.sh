@@ -96,3 +96,11 @@ case $x in
     echo a is not either xyz or abc
     ;;
 esac
+
+## Frontend ##
+# if [ $? -eq 0 ]; then
+#    echo -e "\e[32m==>SUCCESS\e[0m"
+# else
+#   echo -e "\e[31m==>Failuer !!!\e[0m" 
+#   exit 2
+# fi
