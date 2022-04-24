@@ -10,37 +10,43 @@ fi
 
 StatusCheck(){
 if [ $1 -eq 0 ]; then
-    echo -e "\e[32m ==> $2 is => SUCCESS\e[0m"
+    echo -e "\e[32m ==> $2 status is => SUCCESS\e[0m"
 else
-    echo -e "\e[31m ==> $2 is => Failuer !!! \e[0m" 
+    echo -e "\e[31m ==> $2 status is => Failuer !!! \e[0m" 
     exit $1
 fi
 }
 
-echo -e "\e[33m ==> Installing Nginx \e[0m"
+Print(){
+echo -e "\e[33m ==> $1 \e[0m"
+}
+
+Print "Installing Nginx"
 sudo yum install nginx -y
-StatusCheck $? "Nginx installation status" 
+StatusCheck $? "Nginx installation" 
 
-echo -e "\e[33m Download the HTDOCS content and deploy under the Nginx path \e[0m"
+Print "Download the HTDOCS content"
 curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
-StatusCheck $? "Download the HTDOCS content status" 
+StatusCheck $? "Download the HTDOCS content" 
 
-echo -e "\e[33m Deploy in Nginx Default Location \e[0m"
+Print "Clean up old Nginx content"
 cd /usr/share/nginx/html
 rm -rf *
-unzip /tmp/frontend.zip
-mv frontend-main/* .
-mv static/* .
-rm -rf frontend-main README.md
+
+Print "Extracting Archive"
+unzip /tmp/frontend.zip && mv frontend-main/* . && mv static/* . 
+StatusCheck $?
+
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 StatusCheck $? "Deploy in Nginx Default Location status" 
 
-echo -e "\e[33m Finally restart the service once to effect the changes \e[0m"
+Print "Finally restart the service to effect the changes"
 systemctl restart nginx
 StatusCheck $? "Restart service status" 
 
-echo -e "\e[33m Enable Nginx service \e[0m"
+Print "Enable Nginx service"
 systemctl enable nginx
 StatusCheck $? "Enable Nginx service status" 
 
 systemctl status nginx -l
+Print "Cool!!! Frontend is up and Running !!!"
