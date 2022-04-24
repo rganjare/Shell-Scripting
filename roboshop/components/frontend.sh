@@ -21,12 +21,15 @@ Print(){
 echo -e "\e[33m ==> $1 \e[0m"
 }
 
+LOG_FILE=/tmp/roboshop.log
+rm -f $LOG_FILE
+
 Print "Installing Nginx"
-sudo yum install nginx -y
+sudo yum install nginx -y >> $LOG_FILE
 StatusCheck $? "Nginx installation" 
 
 Print "Download the HTDOCS content"
-curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
+curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >> $LOG_FILE
 StatusCheck $? "Download the HTDOCS content" 
 
 Print "Clean up old Nginx content"
