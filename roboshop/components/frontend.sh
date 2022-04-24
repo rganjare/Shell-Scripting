@@ -10,9 +10,9 @@ fi
 
 StatusCheck(){
 if [ $1 -eq 0 ]; then
-    echo -e "\e[32m ==> $2 status is => SUCCESS\e[0m"
+    echo -e "\e[32m ==> $2 => SUCCESS\e[0m"
 else
-    echo -e "\e[31m ==> $2 status is => Failuer !!! \e[0m" 
+    echo -e "\e[31m ==> $2 => Failuer !!! \e[0m" 
     exit $1
 fi
 }
