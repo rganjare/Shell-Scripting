@@ -1,36 +1,14 @@
 
 echo -e "\e[34m ***** Welcome to FrontEnd Component installation ****\e[0m"
 
-USER_ID=$(sudo id -u)
-
-if [ $USER_ID -ne 0 ]; then
-    echo -e "\e[33m You should run script with root user \e[0m"
-    exit 1
-fi
-
-StatusCheck(){
-if [ $1 -eq 0 ]; then
-    echo -e "\e[32m ==> $2 => SUCCESS\e[0m"
-else
-    echo -e "\e[31m ==> $2 => Failuer !!! \e[0m" 
-    exit $1
-fi
-}
-
-Print(){
-    echo -e "\e[33m*********************** $1 ***********************\e[0m" >> $LOG_FILE
-    echo -e "\e[33m ==> $1 \e[0m"
-}
-
-LOG_FILE=/tmp/roboshop.log
-rm -f $LOG_FILE
+source roboshop/common.sh
 
 Print "Installing Nginx"
-sudo yum install nginx -y >> $LOG_FILE
+sudo yum install nginx -y &>> $LOG_FILE
 StatusCheck $? "Nginx installation" 
 
 Print "Download the HTDOCS content"
-curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >> $LOG_FILE
+curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>> $LOG_FILE
 StatusCheck $? "Download the HTDOCS content" 
 
 Print "Clean up old Nginx content"
@@ -39,19 +17,19 @@ rm -rf *
 StatusCheck $? "Clean up old Nginx content"
 
 Print "Extracting Archive"
-unzip /tmp/frontend.zip >> $LOG_FILE && mv frontend-main/* . >> $LOG_FILE && mv static/* . >> $LOG_FILE
+unzip /tmp/frontend.zip &>> $LOG_FILE && mv frontend-main/* . &>> $LOG_FILE && mv static/* . &>> $LOG_FILE
 StatusCheck $? "Extracting Archive"
 
 Print "Updating RoboShop configuration"
-mv localhost.conf /etc/nginx/default.d/roboshop.conf >> $LOG_FILE
+mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
 StatusCheck $? "Updating RoboShop configuration" 
 
 Print "Starting Nginx"
-systemctl restart nginx && systemctl enable nginx >> $LOG_FILE
+systemctl restart nginx && systemctl enable nginx &>> $LOG_FILE
 StatusCheck $? "Starting Nginx" 
 
 Print "Frontend Application status check"
-systemctl status nginx -l >> $LOG_FILE
+systemctl status nginx -l &>> $LOG_FILE
 if [ $? -eq 0 ]; then
 echo -e "\e[32m Cool!!! Frontend is up and Running !!! \e[0m"
 fi
