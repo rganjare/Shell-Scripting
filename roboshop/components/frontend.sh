@@ -1,7 +1,7 @@
 
 echo -e "\e[34m ***** Welcome to FrontEnd Component installation ****\e[0m"
 
-source /roboshop/common.sh
+source components/common.sh
 
 Print "Installing Nginx"
 sudo yum install nginx -y &>> $LOG_FILE
