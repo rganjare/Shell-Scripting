@@ -5,11 +5,13 @@ if [ $USER_ID -ne 0 ]; then
     exit 1
 fi
 
+APP_USER=roboshop
+
 StatusCheck(){
 if [ $1 -eq 0 ]; then
-    echo -e "\e[32m ==> $2 => SUCCESS\e[0m"
+    echo -e "\e[32m ====> SUCCESS\e[0m"
 else
-    echo -e "\e[31m ==> $2 => Failuer !!! \e[0m" 
+    echo -e "\e[31m ====> Failuer !!! \e[0m" 
     exit $1
 fi
 }
