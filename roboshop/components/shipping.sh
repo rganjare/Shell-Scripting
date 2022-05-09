@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source components/common.sh
-COMPONENT=catalogue
+
+COMPONENT=shipping
 ## Function
-NODEJS
+MAVEN

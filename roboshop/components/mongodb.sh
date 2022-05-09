@@ -1,36 +1,37 @@
 #!/bin/bash
-
-echo -e "\e[33m ===> Welcome to MongoDB component installation & configuration !!! \e[0m"
-
 source components/common.sh
 
-Print "Setup MongoDB repos"
-curl -f -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>$LOG_FILE
-StatusCheck $? 
+Print "Setup YUM Repos"
+curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>$LOG_FILE
+StatCheck $?
 
-Print "Install MongoDB" 
-yum install -y mongodb-org &>>$LOG_FILE  
-StatusCheck $?  
+Print "Install MongoDB"
+yum install -y mongodb-org &>>$LOG_FILE
+StatCheck $?
 
-Print "Update Listen IP address in config file"
-sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf 
-StatusCheck $? 
+Print "Update MongoDB Listen Address"
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+StatCheck $?
 
-Print "Start MongoDB" 
-systemctl enable mongod &>>$LOG_FILE && systemctl start mongod &>>$LOG_FILE
-StatusCheck $? 
+Print "Start MongoDB"
+systemctl enable mongod &>>$LOG_FILE && systemctl restart mongod &>>$LOG_FILE
+StatCheck $?
 
-Print "Download the schema"
+Print "Download Schema"
 curl -f -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>$LOG_FILE
-StatusCheck $? 
+StatCheck $?
 
 # -f ==> if download fails, it will return exit code other than 0
 # -o ==> it will overwrite the existing folder
 
-Print "Unzip the repo"
-cd /tmp &>>$LOG_FILE && unzip -o mongodb.zip &>>$LOG_FILE 
-StatusCheck $? 
+Print "Extract Schema"
+cd /tmp && unzip -o mongodb.zip &>>$LOG_FILE
+StatCheck $?
 
-Print "Load the schema"
-cd mongodb-main &>>$LOG_FILE && mongo < catalogue.js &>>$LOG_FILE && mongo < users.js &>>$LOG_FILE
-StatusCheck $? 
+Print "Load Schema"
+cd mongodb-main
+for schema in catalogue users; do
+  echo "Load $schema Schema"
+  mongo < ${schema}.js &>>$LOG_FILE
+  StatCheck $?
+done

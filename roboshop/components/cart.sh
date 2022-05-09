@@ -1,5 +1,7 @@
-
-echo -e "\e[33m ==> Welcome to cart component installation !!!\e[0m"
+#!/bin/bash
 
 source components/common.sh
+COMPONENT=cart
+## Function
+NODEJS
 
